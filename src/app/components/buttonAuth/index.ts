@@ -1,0 +1,1 @@
+export { ButtonAuth } from './buttonAuth'
