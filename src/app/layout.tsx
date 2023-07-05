@@ -2,7 +2,7 @@ import { NextAuthProvider } from '@/providers/auth'
 import './globals.css'
 import { Poppins } from 'next/font/google'
 import { ReactNode } from 'react'
-import { Header } from './components'
+import { NavAuth } from '@/app/modules/Authentication/template'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={poppins.className}>
         <NextAuthProvider>
-          <Header logo={'/test'} />
+          <NavAuth />
           {children}
         </NextAuthProvider>
         </body>

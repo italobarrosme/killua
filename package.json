@@ -30,5 +30,8 @@
     "@iconify/react": "^4.1.1",
     "prettier": "^2.8.8",
     "prisma": "^4.16.2"
+  },
+  "engines": {
+    "node": "16.15.0"
   }
 }

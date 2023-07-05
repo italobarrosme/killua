@@ -38,7 +38,7 @@ Instructions for start project
 
 ### Prerequisites
 
-You need to have 
+- Node v16.15.0
 
 ### Installing
 

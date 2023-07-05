@@ -1,1 +1,0 @@
-export { ButtonAuth } from './buttonAuth'

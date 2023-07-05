@@ -10,12 +10,12 @@ type ButtonAuthProps = {
   data: any;
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
-export const ButtonAuth = ({ icon = '', data, onClick}: ButtonAuthProps) => {
+export const ButtonAuth = ({ icon = '', data, onClick, ...props}: ButtonAuthProps) => {
   return (
-    <button onClick={onClick} className={clsx(data ? 'flex items-center gap-4 border rounded-3xl p-2' : 'font-bold' )}>
+    <button onClick={onClick} className={clsx(data ? 'flex items-center gap-4 border rounded-3xl p-2' : 'font-bold' )} {...props}>
       {data ? (<>
         <Icon icon={icon} width={32}  />
-        <Image src={data.user.image} alt="image user" width={32} height={32} className='rounded-full' />
+        <Image src={data.image} alt="image user" width={32} height={32} className='rounded-full' />
       </>) : 'Login'}
     </button>
   )
