@@ -2,7 +2,8 @@ import { NextAuthProvider } from '@/providers/auth'
 import './globals.css'
 import { Poppins } from 'next/font/google'
 import { ReactNode } from 'react'
-import { NavAuth } from '@/app/modules/Authentication/template'
+import { NavAuth } from '@/modules/Authentication/template'
+import clsx from 'clsx'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -21,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={poppins.className}>
+      <body className={clsx(poppins.className, 'text-brand-dark')}>
         <NextAuthProvider>
           <NavAuth />
           {children}
