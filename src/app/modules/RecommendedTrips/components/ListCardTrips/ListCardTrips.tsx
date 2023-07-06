@@ -12,7 +12,7 @@ export const ListCardTrips = ({
 
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col gap-4 justify-center items-center">
       {cardsTrips.map((cardTrip) => (
         <CardTrip key={cardTrip.id} {...cardTrip} />
       ))}

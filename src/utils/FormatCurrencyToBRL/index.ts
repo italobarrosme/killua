@@ -1,1 +1,1 @@
-export { FormatCurrencyToBRL } './FormatCurrencyToBRL'
+export { FormatCurrencyToBRL } from './FormatCurrencyToBRL'

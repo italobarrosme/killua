@@ -2,7 +2,7 @@ import { NextAuthProvider } from '@/providers/auth'
 import './globals.css'
 import { Poppins } from 'next/font/google'
 import { ReactNode } from 'react'
-import { NavAuth } from '@/modules/Authentication/template'
+import { NavAuth } from '@/app/modules/Authentication/template'
 import clsx from 'clsx'
 
 const poppins = Poppins({

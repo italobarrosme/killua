@@ -2,7 +2,8 @@ export type CardTrip = {
   id: string;
   name: string;
   location: string;
-  starDate: string;
+  startDate: string;
   pricePerDay: number;
   coverImage: string;
+  countryCode: string;
 }
