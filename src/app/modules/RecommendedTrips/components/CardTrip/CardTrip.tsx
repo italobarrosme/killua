@@ -3,11 +3,12 @@ import { CardTrip as CardTripProps } from "../../types"
 import Image from "next/image"
 import {FormatCurrencyToBRL } from "@/utils/FormatCurrencyToBRL"
 import {ReactCountryFlag} from "react-country-flag"
+import Link from "next/link"
 
 
-export const CardTrip = ({ location, name, startDate, pricePerDay, coverImage, countryCode }: CardTripProps) => {
-  console.log(startDate, 'START')
+export const CardTrip = ({ id,location, name, startDate, pricePerDay, coverImage, countryCode }: CardTripProps) => {
   return (
+    <Link href={`/trips/${id}`}>
     <div className="w-80 flex flex-col gap-2 justify-center">
       <div className="w-[280px] h-[280px] mb-2 relative m-auto">
         {coverImage ? <Image src={coverImage} alt={name} fill objectFit="cover" className="rounded-2xl" /> : null}
@@ -28,6 +29,7 @@ export const CardTrip = ({ location, name, startDate, pricePerDay, coverImage, c
         </div>
       </div>
     </div>
+    </Link>
 
   )
 }

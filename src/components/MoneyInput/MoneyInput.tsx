@@ -1,4 +1,6 @@
-import { InputHTMLAttributes, ChangeEvent } from 'react'
+"use client"
+
+import { InputHTMLAttributes } from 'react'
 import { Icon } from '@iconify/react'
 import { cn } from '@/utils/cn'
 import CurrencyInput, { CurrencyInputProps } from "react-currency-input-field";

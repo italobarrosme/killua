@@ -9,8 +9,6 @@ type ListCardTripsProps = {
 export const ListCardTrips = ({
   cardsTrips
 }:ListCardTripsProps) => {
-
-
   return (
     <div className="flex flex-col gap-4 justify-center items-center my-4">
       {cardsTrips.map((cardTrip) => (

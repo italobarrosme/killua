@@ -1,24 +1,42 @@
 import { MarkTitle } from "@/components/MarkTitle"
 import { ListCardTrips } from "../components/ListCardTrips"
-import { GetRecommendedTrips } from "../services/"
-import { useEffect, useState } from "react"
 import { CardTrip } from "../types"
+import { prisma } from "@/lib/prisma/prisma"
 
-export const RecommendedTrips = () => {
- const [trips, setTrips] = useState<CardTrip[]>([])
+const getTrips = async () => {
+  const trips = await prisma.trip.findMany()
 
- useEffect(() => {
-  GetRecommendedTrips().then((response) => {
-    const { trips } = response
+  const cardsTrips = trips.map((trip:CardTrip) => {
+    const cardTrip: CardTrip = {
+      id: trip.id,
+      name: trip.name,
+      location: trip.location,
+      pricePerDay: trip.pricePerDay,
+      startDate: trip.startDate,
+      coverImage: trip.coverImage,
+      countryCode: trip.countryCode,
+    }
 
-    setTrips(trips)
+    return cardTrip
+
   })
-  }, [])
+
+      
+  
+
+  return {
+    cardsTrips,
+  }
+}
+
+export const RecommendedTrips = async () => {
+ const {cardsTrips} = await getTrips()
+ 
 
   return (
     <div className="w-full p-4">
       <MarkTitle label="Destinos Recomendados" />
-      <ListCardTrips cardsTrips={trips} />
+      <ListCardTrips cardsTrips={cardsTrips} />
     </div>
   )
 }

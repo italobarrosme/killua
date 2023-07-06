@@ -1,5 +1,3 @@
-"use client"
-
 import { RecommendedTrips } from "@/app/modules/RecommendedTrips/template"
 import { SearchTripsForm } from "@/app/modules/SearchTrips/template"
 

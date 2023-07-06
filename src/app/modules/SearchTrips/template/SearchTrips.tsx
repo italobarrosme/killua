@@ -1,3 +1,5 @@
+"use client"
+
 import { DatePickerInput } from "@/components/DatePickerInput"
 import { TextInput } from "@/components/TextInput"
 import { Title } from "@/components/Title"
@@ -5,7 +7,7 @@ import { MoneyInput } from "@/components/MoneyInput"
 import { Button } from "@/components/Button"
 import { QuickSearch } from "../components/QuickSearch"
 
-import { CategorySearch } from "@/modules/SearchTrips/types"
+import { CategorySearch } from "@/app/modules/SearchTrips/types"
 
 export const SearchTripsForm = () => {
   const categories:CategorySearch[] = [
@@ -39,8 +41,6 @@ export const SearchTripsForm = () => {
       onClick: () => console.log('Campo')
     },
   ]
-
-
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-full">

@@ -1,6 +1,8 @@
+"use client"
+
 import { MarkTitle } from "@/components/MarkTitle"
 import { Icon } from '@iconify/react'
-import { CategorySearch } from "@/modules/SearchTrips/types"
+import { CategorySearch } from "@/app/modules/SearchTrips/types"
 
 type QuickSearchProps = {
   categories: CategorySearch[]
