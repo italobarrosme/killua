@@ -1,0 +1,1 @@
+export { CardTrip } from './CardTrip'

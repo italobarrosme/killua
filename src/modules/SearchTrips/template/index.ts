@@ -1,1 +1,1 @@
-export { SearchTripsForm} from './SearchTripsForm';
+export { SearchTripsForm} from './SearchTrips';

@@ -1,0 +1,1 @@
+export { RecommendedTrips } from './RecommendedTrips'

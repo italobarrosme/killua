@@ -8,8 +8,6 @@ import { QuickSearch } from "../components/QuickSearch"
 import { CategorySearch } from "@/modules/SearchTrips/types"
 
 export const SearchTripsForm = () => {
-  // LOGICA HERE
-
   const categories:CategorySearch[] = [
     {
       id: '1',
@@ -45,8 +43,8 @@ export const SearchTripsForm = () => {
 
 
   return (
-    <div className="flex flex-col items-center justify-center w-full h-full p-4 ">
-      <div className="flex flex-col items-center justify-center bg-search-background bg-cover bg-center bg-no-repeat w-full">
+    <div className="flex flex-col items-center justify-center w-full h-full">
+      <div className="flex flex-col items-center justify-center bg-search-background bg-cover bg-center bg-no-repeat w-full p-4">
         <Title label="Encontre sua próxima" highlight="viagem!" />
         <div className="flex flex-col gap-4 py-4">
           <TextInput placeholder="Onde você quer ir?" onChange={() => console.log('here')} />
@@ -58,7 +56,7 @@ export const SearchTripsForm = () => {
         </div>
       </div>
 
-      <div className="w-full">
+      <div className="w-full p-4">
         <QuickSearch categories={categories} />
       </div>
     </div>

@@ -1,0 +1,1 @@
+export { ListCardTrips } from './ListCardTrips'
