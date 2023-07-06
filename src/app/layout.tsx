@@ -22,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={clsx(poppins.className, 'text-brand-dark')}>
+      <body className={clsx(poppins.className, 'text-brand-dark text-sm')}>
         <NextAuthProvider>
           <NavAuth />
           {children}

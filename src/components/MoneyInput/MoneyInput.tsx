@@ -20,7 +20,7 @@ export const MoneyInput = ({ id, error, errorMessage, icon, placeholder, label, 
       >
         {label}
       </label>
-      <div className={cn('flex gap-2 border items-center rounded-md h-9 w-full text-brand-dark')}>
+      <div className={cn('flex gap-2 border items-center rounded-md h-9 w-full text-brand-dark bg-brand-grays-100')}>
       {icon ? <Icon icon={icon} /> : null}
         <CurrencyInput
           id={id}

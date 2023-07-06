@@ -37,7 +37,7 @@ export const DatePickerInput = ({
       >
         {label}
       </label>
-      <div className={cn(error ? "border-red-500" : "focus:ring-1 focus:ring-brand-primary", 'flex gap-2 border items-center rounded-md h-9 w-full text-brand-dark')}>
+      <div className={cn(error ? "border-red-500" : "focus:ring-1 focus:ring-brand-primary", 'flex gap-2 border items-center rounded-md h-9 w-full text-brand-dark bg-brand-grays-100')}>
         {icon ? <Icon icon={icon} /> : null}
         <DatePicker
           placeholderText={placeholderText}
