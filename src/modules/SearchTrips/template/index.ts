@@ -1,0 +1,1 @@
+export { SearchTripsForm} from './SearchTripsForm';
