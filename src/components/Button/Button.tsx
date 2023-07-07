@@ -1,12 +1,17 @@
 import { ComponentPropsWithoutRef } from "react";
 import { cn } from "@/utils/cn";
 
-export const Button = ({ className, ...props }: ComponentPropsWithoutRef<"button">) => {
+type ButtonProps = {
+  variant?: "secondary" | "outline";
+} & ComponentPropsWithoutRef<"button">
+
+export const Button = ({ className,variant = 'secondary', ...props }:ButtonProps ) => {
 
   return (
     <button className={cn(
       className,
-      "appearance-none rounded-lg bg-brand-secondary w-full max-w-xl p-2 text-sm font-medium text-white shadow transition-all hover:bg-brand-dark"
+      variant === "secondary" ? "bg-brand-secondary font-medium text-white" : "bg-transparent border border-brand-secondary text-brand-secondary hover:bg-brand-secondary hover:text-white font-semibold",
+      "appearance-none rounded-lg w-full max-w-xl p-2 text-sm shadow transition-all hover:bg-brand-dark"
     )} {...props}>
       {props.children}
     </button>

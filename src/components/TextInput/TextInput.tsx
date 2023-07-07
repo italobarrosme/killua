@@ -9,6 +9,7 @@ export type TextInputProps = {
   icon?: string
   error?: string
   errorMessage?: string
+  auxiliaryText?: string
   onChange: (event: ChangeEvent<HTMLInputElement>) => void
 } & InputHTMLAttributes<HTMLInputElement>
 
@@ -20,6 +21,7 @@ export const TextInput = ({
   maxLength = 50,
   error,
   errorMessage,
+  auxiliaryText,
   onChange,
   className,
   ...props
@@ -43,10 +45,15 @@ export const TextInput = ({
           placeholder={placeholder}
           {...props}
         />
-        {error && errorMessage && (
-        <span className="mt-1 text-xs text-red-500">{errorMessage}</span>
-      )}
+        
+        
       </div>
+      {error && errorMessage && (
+        <span className="mt-1 text-xs text-red-500">{errorMessage}</span>
+        )}
+      {auxiliaryText ? (
+          <span className="mt-1 text-xs">{auxiliaryText}</span>
+        ) : null}
     </div>
   )
 }
