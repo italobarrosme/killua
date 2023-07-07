@@ -3,6 +3,7 @@ import { Division } from "@/components/Division"
 import { prisma } from "@/lib/prisma/prisma"
 import Image from "next/image"
 import { HighLights } from "../components/HighLights"
+import { BookTrip } from "./BookTrip"
 
 type DetailsTripProps = {
   tripId: string
@@ -34,6 +35,7 @@ export const DetailsTrip = async ({tripId}: DetailsTripProps) => {
         } /> : null}
       </div>
       <div className="w-full p-4">
+        <BookTrip />
         <Division />
         <Describe title={'Sobre a Viagem'} description={trip.description} className="my-8" />
         <HighLights highLights={trip.highlights} />

@@ -21,7 +21,7 @@ export const QuickSearch = ({
             <li  key={category.id} className="flex flex-col items-center gap-2" onClick={
               category.onClick
             }>
-              <Icon icon={category.icon} width={28} className="text-brand-grays-400"/>
+              <Icon icon={category.icon} width={28} className="text-brand-grays-400 hover:text-brand-secondary cursor-pointer"/>
               <p>{category.label}</p>
             </li>
          )): null}

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { ButtonAuth } from "../ButtonAuth";
+import Link from "next/link";
 
 type Menu = {
   name: string;
@@ -22,7 +23,9 @@ export const Navbar = ({logo, user, buttonAuthClick, menus, isMenuOpen}:NavbarPr
 
   return (
     <nav className="h-20 flex items-center justify-between px-4 relative shadow-sm">
-      <Image src={logo} alt="logo" width={183} height={32} />
+      <Link href="/">
+        <Image src={logo} alt="logo" width={183} height={32} />
+      </Link>
       <ButtonAuth data={user} icon={isMenuOpen ? 'lucide:x' : 'quill:hamburger'} onClick={
         buttonAuthClick
       } />
