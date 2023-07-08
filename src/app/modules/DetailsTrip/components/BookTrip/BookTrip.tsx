@@ -22,8 +22,19 @@ export const BookTrip = ({
 }: BookTripProps) => {
   const { register, handleSubmit, formState: { errors },  control, watch  } = useForm<BookTripForm>()
 
-  const onSubmit = (data: any) => {
-    console.log(data, 'DATA')
+  const onSubmit = async (data: BookTripForm) => {
+    const response = await fetch('/api/trips/check', {
+      method: 'POST',
+      body: JSON.stringify(
+        {
+          startDate: data.startDate,
+          endDate: data.endDate,
+          tripId: trip.id,
+        }
+      )
+    }).then(res => res.json())
+
+    console.log(response)
   }
 
   const startDate = watch("startDate")
