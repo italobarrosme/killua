@@ -38,8 +38,8 @@ export const BookTrip = ({
 
 
   return (
-    <div className="w-full p-4">
-      <div className="flex flex-col items-center justify-center w-full">
+    <div className="w-full">
+      <div className="flex flex-col">
         <div className="flex flex-col gap-4 py-2">
           <p className="text-xs">
             <span className="text-brand-secondary font-semibold">{FormatCurrencyToBRL(trip?.pricePerDay)}</span> por noite

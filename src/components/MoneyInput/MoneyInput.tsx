@@ -15,7 +15,7 @@ type MoneyInputProps = {
 
 export const MoneyInput = ({ id, error, errorMessage, icon, placeholder, label, onChange, value, className, ...props }:MoneyInputProps) => {
   return (
-    <div className="w-full max-w-xl">
+    <div className="w-full">
       <label
         htmlFor={id}
         className="uppercase text-secondary-500 font-bold my-2 text-sm"

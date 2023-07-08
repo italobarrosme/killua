@@ -1,10 +1,11 @@
 import { Describe } from "@/components/Describe"
 import { Division } from "@/components/Division"
 import { prisma } from "@/lib/prisma/prisma"
-import Image from "next/image"
 import { HighLights } from "../components/HighLights"
 import { BookTrip } from "../components/BookTrip"
 import { LocationTrip } from "../components/LocationTrip"
+import { GalleryTrip } from "../components/GalleryTrip"
+import { ApresentationTrip } from "../components/ApresentationTrip"
 
 type DetailsTripProps = {
   tripId: string
@@ -27,15 +28,11 @@ export const DetailsTrip = async ({tripId}: DetailsTripProps) => {
 
   return (
     <div className="w-full">
-      <div className="relative h-[300px] w-full">
-        {trip ? <Image src={trip.coverImage} alt={trip.name} fill style={
-          {
-            objectFit: 'cover',
-            objectPosition: 'center'
-          }
-        } /> : null}
-      </div>
-      <div className="w-full p-4">
+      <GalleryTrip  coverImage={trip.coverImage} images={[]}/>
+      <div className="w-full p-4 max-w-xl mx-auto">
+        <div>
+          <ApresentationTrip nameTrip={trip.name} locationTrip={trip.location} countryCodeTrip={trip.countryCode} />
+        </div>
         <BookTrip trip={trip} />
         <Division />
         <Describe title={'Sobre a Viagem'} description={trip.description} className="my-8" />

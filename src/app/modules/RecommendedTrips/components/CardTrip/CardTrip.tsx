@@ -1,9 +1,8 @@
-import { Title } from "@/components/Title"
 import { CardTrip as CardTripProps } from "../../types"
 import Image from "next/image"
 import {FormatCurrencyToBRL } from "@/utils/FormatCurrencyToBRL"
-import {ReactCountryFlag} from "react-country-flag"
 import Link from "next/link"
+import { ApresentationTrip } from "@/app/modules/DetailsTrip/components/ApresentationTrip"
 
 
 export const CardTrip = ({ id,location, name, startDate, pricePerDay, coverImage, countryCode }: CardTripProps) => {
@@ -14,19 +13,8 @@ export const CardTrip = ({ id,location, name, startDate, pricePerDay, coverImage
         {coverImage ? <Image src={coverImage} alt={name} fill objectFit="cover" className="rounded-2xl" /> : null}
       </div>
       <div className="w-[280px] m-auto">
-        <Title label={name} className="text-base" />
-        <div className="text-xs flex flex-col gap-1">
-          <p className="flex items-center gap-2">
-            <span>
-              <ReactCountryFlag countryCode={countryCode} style={{
-                width: '16px',
-                height: '16px',
-              }} svg />
-            </span>
-            {location}
-          </p>
-          <p><span className="text-brand-secondary font-semibold">{FormatCurrencyToBRL(pricePerDay)}</span> por noite</p>
-        </div>
+      <ApresentationTrip nameTrip={name} locationTrip={location} countryCodeTrip={countryCode} />
+        <p><span className="text-brand-secondary font-semibold">{FormatCurrencyToBRL(pricePerDay)}</span> por noite</p>
       </div>
     </div>
     </Link>

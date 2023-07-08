@@ -1,6 +1,6 @@
 "use client"
 
-import { Navbar } from '@/app/modules/Authentication/components'
+import { Navbar } from '@/components/Navbar'
 import { signIn, signOut, useSession } from 'next-auth/react'
 import { useState } from 'react'
 

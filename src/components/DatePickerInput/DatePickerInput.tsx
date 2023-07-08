@@ -30,7 +30,7 @@ export const DatePickerInput = ({
 
 
   return (
-    <div className="w-full max-w-xl">
+    <div className="w-full">
       <label
         htmlFor={id}
         className="uppercase text-secondary-500 font-bold my-2 text-sm"
@@ -42,7 +42,6 @@ export const DatePickerInput = ({
         <DatePicker
           placeholderText={placeholderText}
           locale={'pt-BR'}
-          wrapperClassName={'w-full'}
           className={cn('rounded-md focus:outline-none px-2 w-full placeholder-black placeholder-opacity-20', className)} 
           enableTabLoop={false}
           {...props}
