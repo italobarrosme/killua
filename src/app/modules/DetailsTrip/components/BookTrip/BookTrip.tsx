@@ -19,11 +19,13 @@ type BookTripForm = {
 export const BookTrip = ({
   trip,
 }: BookTripProps) => {
-  const { register, handleSubmit, formState: { errors },  control  } = useForm<BookTripForm>()
+  const { register, handleSubmit, formState: { errors },  control, watch  } = useForm<BookTripForm>()
 
   const onSubmit = (data: any) => {
     console.log(data, 'DATA')
   }
+
+  const startDate = watch("startDate")
 
   return (
     <div className="w-full">
@@ -46,7 +48,8 @@ export const BookTrip = ({
               render={({ field }) => (
                 <DatePickerInput placeholderText="Data de início" 
                 onChange={(ev) => field.onChange(ev!!)}
-                selected={field.value} 
+                selected={field.value}
+                minDate={trip.startDate}
                 error={errors.startDate}
                 errorMessage={errors.startDate?.message}  />
               )}
@@ -66,6 +69,8 @@ export const BookTrip = ({
                 <DatePickerInput placeholderText="Data de final" 
                 onChange={(ev) => field.onChange(ev!!)}
                 selected={field.value} 
+                maxDate={trip.endDate}
+                minDate={startDate ?? trip.startDate}
                 error={errors.endDate}
                 errorMessage={errors.endDate?.message}  />
               )}
