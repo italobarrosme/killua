@@ -8,11 +8,11 @@ import "react-datepicker/dist/react-datepicker.css";
 import ptBR from 'date-fns/locale/pt-BR';
 
 type DatePickerInputProps = {
-  error?: string;
+  error?: any;
   errorMessage?: string;
   label?: string;
   icon?: string;
-} & InputHTMLAttributes<HTMLInputElement> & ReactDatePickerProps;
+} & ReactDatePickerProps & InputHTMLAttributes<HTMLInputElement>;
 
 registerLocale("pt-BR", ptBR);
 
@@ -25,6 +25,7 @@ export const DatePickerInput = ({
   errorMessage,
   icon,
   placeholderText,
+  onChange,
   ...props
  }: DatePickerInputProps) => {
 
@@ -41,15 +42,17 @@ export const DatePickerInput = ({
         {icon ? <Icon icon={icon} /> : null}
         <DatePicker
           placeholderText={placeholderText}
+          onChange={onChange}
           locale={'pt-BR'}
           className={cn('rounded-md focus:outline-none px-2 w-full placeholder-black placeholder-opacity-20', className)} 
           enableTabLoop={false}
           {...props}
         />
-        {error && errorMessage && (
-        <span className="mt-1 text-xs text-red-500">{errorMessage}</span>
-      )}
+        
       </div>
+      {error ? (
+          <span className="mt-1 text-xs text-red-500">{errorMessage}</span>
+        ): null}
     </div>
   )
 }
