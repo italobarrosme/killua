@@ -5,6 +5,7 @@ import { DatePickerInput } from "@/components/DatePickerInput"
 import { TextInput } from "@/components/TextInput"
 import { FormatCurrencyToBRL } from "@/utils/FormatCurrencyToBRL"
 import { Controller, useForm } from "react-hook-form"	
+import { ValidateRangeDatePricePerDay } from "../../domains"
 
 type BookTripProps = {
   trip: any
@@ -12,7 +13,7 @@ type BookTripProps = {
 
 type BookTripForm = {
   guests: number
-  startDate?: Date
+  startDate: Date
   endDate: Date
 }
 
@@ -26,6 +27,10 @@ export const BookTrip = ({
   }
 
   const startDate = watch("startDate")
+  const endDate = watch("endDate")
+
+  const { price, days } = ValidateRangeDatePricePerDay(startDate, endDate, trip.pricePerDay)
+  
 
   return (
     <div className="w-full">
@@ -94,8 +99,12 @@ export const BookTrip = ({
           />
           
           <div className="flex justify-between">
-            <span className="text-sm">Total(7 noites)</span>
-            <span className="text-sm">{FormatCurrencyToBRL(2660)}</span>
+            <span className="text-sm">Total({days} {days > '1' ? 'noites' : 'noite'})</span>
+            <span className="text-sm">
+              
+            {price}
+
+            </span>
           </div>
           <Button onClick={() => handleSubmit(onSubmit)() }>Reservar agora</Button>
         </div>
