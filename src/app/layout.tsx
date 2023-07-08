@@ -4,6 +4,7 @@ import { Poppins } from 'next/font/google'
 import { ReactNode } from 'react'
 import { NavAuth } from '@/app/modules/Authentication/template'
 import clsx from 'clsx'
+import { Footer } from '@/components/Footer/'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -26,6 +27,7 @@ export default function RootLayout({
         <NextAuthProvider>
           <NavAuth />
           {children}
+          <Footer logo='/logo-orangescreen-center.png' text='Todos os direitos reservados' />
         </NextAuthProvider>
         </body>
     </html>

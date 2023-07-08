@@ -36,7 +36,6 @@ export const BookTrip = ({
     })
   }
 
-
   return (
     <div className="w-full">
       <div className="flex flex-col">

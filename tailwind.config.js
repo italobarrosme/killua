@@ -13,8 +13,9 @@ module.exports = {
       },
       colors: {
         brand: {
-          primary: '#DDD5EA',
+          primary: '#401AE0',
           secondary: '#590BD8',
+          ternary: '#DDD5EA',
           grays: {
             100: '#FFFFFF',
             200: '#F5F5F5',
