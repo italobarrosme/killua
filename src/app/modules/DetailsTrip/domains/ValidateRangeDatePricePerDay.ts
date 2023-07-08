@@ -3,6 +3,7 @@ import { differenceInDays } from "date-fns"
 
 type ValidateRangeDatePricePerDayResponse = {
   days: string
+  priceFormated: string
   price: string
 }
 
@@ -10,7 +11,8 @@ export const ValidateRangeDatePricePerDay = (dateStart: Date, dateEnd: Date, pri
   if (!dateStart || !dateEnd || !pricePerDay) {
     return {
       days: '0',
-      price: FormatCurrencyToBRL(0)
+      priceFormated: FormatCurrencyToBRL(0),
+      price: '0'
     }
   }  
   
@@ -19,6 +21,7 @@ export const ValidateRangeDatePricePerDay = (dateStart: Date, dateEnd: Date, pri
 
     return {
       days: `${days}`,
-      price: FormatCurrencyToBRL(price)
+      priceFormated: FormatCurrencyToBRL(price),
+      price: `${price}`
     }
 }

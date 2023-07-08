@@ -6,6 +6,7 @@ import { TextInput } from "@/components/TextInput"
 import { FormatCurrencyToBRL } from "@/utils/FormatCurrencyToBRL"
 import { Controller, useForm } from "react-hook-form"	
 import { ValidateRangeDatePricePerDay } from "../../domains"
+import { useRouter } from "next/navigation"
 
 type BookTripProps = {
   trip: any
@@ -20,7 +21,8 @@ type BookTripForm = {
 export const BookTrip = ({
   trip,
 }: BookTripProps) => {
-  const { register, handleSubmit, formState: { errors },  control, watch  } = useForm<BookTripForm>()
+  const { register, handleSubmit, formState: { errors },  control, watch, setError } = useForm<BookTripForm>()
+  const router = useRouter()
 
   const onSubmit = async (data: BookTripForm) => {
     const response = await fetch('/api/trips/check', {
@@ -35,12 +37,26 @@ export const BookTrip = ({
     }).then(res => res.json())
 
     console.log(response)
+
+    if (!response.success) {
+      setError("startDate", {
+        type: "manual",
+        message: response.message
+      })
+      setError("endDate", {
+        type: "manual",
+        message: ''
+      })
+    } else {
+      router.push(
+        `/trips/${trip.id}/checkout?startDate=${data.startDate.toISOString()}&endDate=${data.endDate.toISOString()}&guests=${data.guests}&price=${price}`)
+    }
   }
 
   const startDate = watch("startDate")
   const endDate = watch("endDate")
 
-  const { price, days } = ValidateRangeDatePricePerDay(startDate, endDate, trip.pricePerDay)
+  const { price,priceFormated, days } = ValidateRangeDatePricePerDay(startDate, endDate, trip.pricePerDay)
   
 
   return (
@@ -48,7 +64,7 @@ export const BookTrip = ({
       <div className="flex flex-col">
         <div className="flex flex-col gap-4 py-2">
           <p className="text-xs">
-            <span className="text-brand-secondary font-semibold">{FormatCurrencyToBRL(trip?.pricePerDay)}</span> por noite
+            <span className="text-brand-secondary font-semibold">{FormatCurrencyToBRL(trip.pricePerDay)}</span> por noite
           </p>
           <div className="flex gap-4">
             <Controller
@@ -102,7 +118,8 @@ export const BookTrip = ({
               value: trip?.maxGuests,
               message: `O número máximo de hóspedes é ${trip?.maxGuests}`,
             }
-          })} 
+          })}
+          type="number"
           placeholder="Hóspedes" 
           auxiliaryText={`Número máximo de Hóspedes: ${trip?.maxGuests}`}
           error={errors.guests}
@@ -113,7 +130,7 @@ export const BookTrip = ({
             <span className="text-sm">Total({days} {days > '1' ? 'noites' : 'noite'})</span>
             <span className="text-sm">
               
-            {price}
+            {priceFormated}
 
             </span>
           </div>

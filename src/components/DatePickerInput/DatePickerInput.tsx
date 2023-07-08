@@ -42,6 +42,7 @@ export const DatePickerInput = ({
         {icon ? <Icon icon={icon} /> : null}
         <DatePicker
           placeholderText={placeholderText}
+          dateFormat={'dd/MM/yyyy'}
           onChange={onChange}
           locale={'pt-BR'}
           className={cn('rounded-md focus:outline-none px-2 w-full placeholder-black placeholder-opacity-20', className)} 

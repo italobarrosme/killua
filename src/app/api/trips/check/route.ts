@@ -4,7 +4,21 @@ import { NextResponse } from 'next/server'
 export async function POST(request: Request) {
   const req = await request.json()
 
-  console.log(req, 'REQ SERVE SIDE')
+  const trip = await prisma.trip.findUnique({
+    where: {
+      id: req.tripId
+    }
+  })
+
+  if (!trip) {
+    return new NextResponse(JSON.stringify({
+      success: false,
+      message: 'Viagem não encontrada'
+    }), {
+      status: 404,
+    })
+  }
+
   const reservations = await prisma.tripReservation.findMany({
     where: {
       tripId: req.tripId,
@@ -23,15 +37,13 @@ export async function POST(request: Request) {
       success: false,
       message: 'Já existe uma reserva para esse período'
     }), {
-      status: 200,
+      status: 400,
     })
-
-
-
   }
 
   return new NextResponse(JSON.stringify({
     success: true,
+    trip: trip
   }), {
     status: 200,
   })

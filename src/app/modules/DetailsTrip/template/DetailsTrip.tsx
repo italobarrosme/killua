@@ -27,7 +27,7 @@ export const DetailsTrip = async ({tripId}: DetailsTripProps) => {
   if (!trip) return null
 
   return (
-    <div className="w-full">
+    <div className="w-full flex min-h-screen flex-col">
       <GalleryTrip  coverImage={trip.coverImage} images={[]}/>
       <div className="w-full p-4 max-w-xl mx-auto">
         <div>
