@@ -36,8 +36,6 @@ export const BookTrip = ({
       )
     }).then(res => res.json())
 
-    console.log(response)
-
     if (!response.success) {
       setError("startDate", {
         type: "manual",
@@ -106,7 +104,6 @@ export const BookTrip = ({
                 error={errors.endDate}
                 errorMessage={errors.endDate?.message}  />
               )}
-              
             />
           </div>
           <TextInput {...register("guests", {

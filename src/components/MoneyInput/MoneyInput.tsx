@@ -1,6 +1,6 @@
 "use client"
 
-import { InputHTMLAttributes } from 'react'
+import { InputHTMLAttributes, Ref, forwardRef } from 'react'
 import { Icon } from '@iconify/react'
 import { cn } from '@/utils/cn'
 import CurrencyInput, { CurrencyInputProps } from "react-currency-input-field";
@@ -9,11 +9,19 @@ import CurrencyInput, { CurrencyInputProps } from "react-currency-input-field";
 type MoneyInputProps = {
   label?: string
   icon?: string
-  error?: string
+  error?: any
   errorMessage?: string
 } & InputHTMLAttributes<HTMLInputElement> & CurrencyInputProps
 
-export const MoneyInput = ({ id, error, errorMessage, icon, placeholder, label, onChange, value, className, ...props }:MoneyInputProps) => {
+const MoneyInputImplement = ({ id, 
+  error, 
+  errorMessage, 
+  icon, 
+  placeholder, 
+  label,
+  value, 
+  className, 
+  ...props }:MoneyInputProps, ref: Ref<HTMLInputElement>) => {
   return (
     <div className="w-full">
       <label
@@ -39,3 +47,5 @@ export const MoneyInput = ({ id, error, errorMessage, icon, placeholder, label, 
     </div>
   )
 }
+
+export const MoneyInput = forwardRef(MoneyInputImplement)

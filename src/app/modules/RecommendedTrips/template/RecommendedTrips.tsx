@@ -19,10 +19,7 @@ const getTrips = async () => {
 
     return cardTrip
 
-  })
-
-      
-  
+  })  
 
   return {
     cardsTrips,

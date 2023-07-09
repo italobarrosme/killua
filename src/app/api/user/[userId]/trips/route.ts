@@ -27,9 +27,6 @@ export async function GET(request: Request, { params: { userId } }: UserParams) 
         trip: true,
       }
     })
-
-    console.log(reservations, 'RESERVATIONS')
-
     return new NextResponse(JSON.stringify({
       success: true,
       tripReservations: reservations,
