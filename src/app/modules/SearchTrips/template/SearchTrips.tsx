@@ -46,30 +46,30 @@ export const SearchTripsForm = () => {
       id: '1',
       label: 'Praia',
       icon: 'mdi:beach',
-      value: 'beach',
-      onClick: () => console.log('Praia')
+      value: 'praia',
+      onClick: () => router.push('/trips/search?location=praia')
     },
     {
       id: '2',
       label: 'Montanha',
       icon: 'mdi:mountain',
-      value: 'mountain',
-      onClick: () => console.log('Montanha')
+      value: 'montanha',
+      onClick: () => router.push('/trips/search?location=montanha')
 
     },
     {
       id: '3',
       label: 'Cidade',
       icon: 'mdi:city',
-      value: 'city',
-      onClick: () => console.log('Cidade')
+      value: 'cidade',
+      onClick: () => router.push('/trips/search?location=cidade')
     },
     {
       id: '4',
       label: 'Campo',
       icon: 'mdi:pine-tree',
-      value: 'field',
-      onClick: () => console.log('Campo')
+      value: 'campo',
+      onClick: () => router.push('/trips/search?location=campo')
     },
   ]
 

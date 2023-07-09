@@ -14,10 +14,12 @@ type SearchListTripsProps = {
 }
 
 export const SearchListTrips = ({cardsTrips}:SearchListTripsProps) => {
-  console.log(cardsTrips, 'CARDS TRIPS')
   return (
     <div className="w-full flex min-h-screen flex-col p-4 items-center">
       <Title label="Viagens Encontradas" />
+      <small>
+        {cardsTrips.length} viagens encontradas
+      </small>
       <ListCardTrips cardsTrips={cardsTrips} />
     </div>
   )

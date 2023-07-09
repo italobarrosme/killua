@@ -2,7 +2,6 @@ import {prisma} from '@/lib/prisma/prisma'
 import { NextResponse } from 'next/server'
 
 const generateSearchQuery = (location: string, startDate: string, budget: string) => {
-  console.log(location, startDate, budget, '##################################')
   let searchQuery: any = {
     OR: [
       {
@@ -63,7 +62,6 @@ export async function GET(request: Request) {
         ...generateSearchQuery(location, startDate, budget)
       }
     })
-    console.log(trips, '##################################')
 
     if (!trips) {
       return new NextResponse(JSON.stringify({

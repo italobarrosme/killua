@@ -19,8 +19,6 @@ const Trips = () => {
     const {trips} = await fetch(`/api/trips/search?location=${location}&startDate=${startDate}&budget=${budget}`)
     .then(res => res.json())
 
-    console.log(trips, 'TRIPS')
-
     setTrips(trips)
   }
 

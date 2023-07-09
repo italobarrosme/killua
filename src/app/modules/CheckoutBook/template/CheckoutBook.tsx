@@ -6,6 +6,7 @@ import { Button } from "@/components/Button"
 import { useEffect,useState } from "react"
 import { toast } from "react-toastify"
 import { useRouter } from "next/navigation"
+import { loadStripe } from "@stripe/stripe-js"
 
 type CheckoutBookProps = {
     tripId: string
@@ -29,16 +30,17 @@ export const CheckoutBook = ({
   const router = useRouter()
 
   const submitCheckoutTrip = async () => {
-    const response = await fetch('/api/trips/checkout-book', {
+    const response = await fetch('/api/payment', {
       method: 'POST',
       body: JSON.stringify(
         {
-          startDate: startDate,
-          endDate: endDate,
+          name: checkoutTrip.name,
+          coverImage: checkoutTrip.coverImage,
+          tripId: checkoutTrip.id,
+          startDate,
+          endDate,
+          guests,
           totalPrice: price,
-          guests: Number(guests),
-          userId,
-          tripId,
         }
       )
     }).then(res => res.json())
@@ -47,7 +49,13 @@ export const CheckoutBook = ({
       toast.success(response.message, {
         position: "top-right",
       })
-      router.push('/my-trips')
+      
+      if (response.sessionId) {
+        const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY as string)
+        await stripe?.redirectToCheckout({ sessionId: response.sessionId })
+      }
+
+
     } else {
       toast.error(response.message, {
         position: "top-right",

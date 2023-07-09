@@ -33,7 +33,7 @@ export const Navbar = ({logo, user, buttonAuthClick, menus, isMenuOpen}:NavbarPr
         isMenuOpen ? (
           <ul className="border absolute right-24 top-16 bg-brand-grays-100 shadow-xl rounded-md p-2 z-20">
           {menus.map((menu, index) => (
-            <li key={index} className="p-0 cursor-pointer text-xs text-brand-secondary font-semibold hover:bg-brand-primary px-2" onClick={menu.onClick}>
+            <li key={index} className="p-0 my-4 cursor-pointer text-xs text-brand-secondary font-semibold hover:bg-brand-primary hover:text-white px-2" onClick={menu.onClick}>
               {menu.name}
             </li>
           ))}
