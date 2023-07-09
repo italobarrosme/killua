@@ -1,10 +1,11 @@
 "use client"
 
 import { Title } from "@/components/Title"
-import { CardCheckoutBook } from "../components/CardCheckoutBook"
+import { CardTripBook } from "../../../../components/CardTripBook"
 import { Button } from "@/components/Button"
 import { useEffect,useState } from "react"
 import { toast } from "react-toastify"
+import { useRouter } from "next/navigation"
 
 type CheckoutBookProps = {
     tripId: string
@@ -25,6 +26,7 @@ export const CheckoutBook = ({
   userId,
 }:CheckoutBookProps) => {
   const [checkoutTrip, setCheckoutTrip] = useState<any>(null)
+  const router = useRouter()
 
   const submitCheckoutTrip = async () => {
     const response = await fetch('/api/trips/checkout-book', {
@@ -41,12 +43,11 @@ export const CheckoutBook = ({
       )
     }).then(res => res.json())
 
-    console.log(response, 'SUCESSO')
-
     if (response.success) {
       toast.success(response.message, {
         position: "top-right",
       })
+      router.push('/my-trips')
     } else {
       toast.error(response.message, {
         position: "top-right",
@@ -79,7 +80,7 @@ export const CheckoutBook = ({
         <Title label="Sua viagem" />
       </div>
       <div className="p-4">
-        <CardCheckoutBook 
+        <CardTripBook 
           coverImage={checkoutTrip.coverImage}
           nameTrip={checkoutTrip.name}
           locationTrip={checkoutTrip.location}

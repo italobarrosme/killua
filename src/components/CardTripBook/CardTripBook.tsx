@@ -4,8 +4,10 @@ import { Title } from "@/components/Title"
 import { FormatCurrencyToBRL } from "@/utils/FormatCurrencyToBRL"
 import Image from "next/image"
 import {format} from 'date-fns'
+import { ReactNode } from "react"
 
-type CardCheckoutBookProps = {
+export type CardTripBookProps = {
+  id?: string
   coverImage: string
   nameTrip: string
   locationTrip: string
@@ -15,10 +17,11 @@ type CardCheckoutBookProps = {
   endDateTrip: string
   priceTrip: string
   guestsTrip: string
+  children?: ReactNode
 }
 
 
-export const CardCheckoutBook = ({
+export const CardTripBook = ({
   coverImage,
   nameTrip,
   locationTrip,
@@ -27,8 +30,9 @@ export const CardCheckoutBook = ({
   startDateTrip,
   endDateTrip,
   priceTrip,
-  guestsTrip
-}:CardCheckoutBookProps) => {
+  guestsTrip,
+  children
+}:CardTripBookProps) => {
   const formattedStartDate = format(new Date(startDateTrip), 'dd/MM/yyyy');
   const formattedEndDate = format(new Date(endDateTrip), 'dd/MM/yyyy');
 
@@ -52,7 +56,10 @@ export const CardCheckoutBook = ({
       </p>
       <div className="flex justify-between mt-4">
         <span>Total</span>
-        <span className="font-bold">{FormatCurrencyToBRL(+priceTrip)}</span>
+        <span className="font-bold">{+priceTrip > 0 ? FormatCurrencyToBRL(+priceTrip) : `Grátis`}</span>
+      </div>
+      <div className="mt-5">
+        {children}
       </div>
     </div>
   )

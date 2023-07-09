@@ -3,9 +3,11 @@
 import { Navbar } from '@/components/Navbar'
 import { signIn, signOut, useSession } from 'next-auth/react'
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 export const NavAuth = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const router = useRouter()
 
   const menus = [
     {
@@ -16,6 +18,14 @@ export const NavAuth = () => {
         setIsMenuOpen(false)
       }
     },
+    {
+      name: 'Minhas viagens',
+      icon: 'bx:bx-home',
+      onClick: () => {
+        router.push('/my-trips')
+        setIsMenuOpen(false)
+      }
+    }
   ]
 
  const toggleMenu = () => {

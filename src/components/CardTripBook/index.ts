@@ -1,0 +1,1 @@
+export { CardTripBook, type CardTripBookProps } from './CardTripBook'
