@@ -40,7 +40,6 @@ export const CardCheckoutBook = ({
         </div>
         <div className="w-full">
           <ApresentationTrip nameTrip={nameTrip} locationTrip={locationTrip} countryCodeTrip={countryCodeTrip} />
-          <p className="text-sm mt-4 max-h-32 overflow-y-auto">{descriptionTrip}</p>
         </div>
       </div>
       <Division />

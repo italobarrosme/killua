@@ -4,6 +4,7 @@ import { Title } from "@/components/Title"
 import { CardCheckoutBook } from "../components/CardCheckoutBook"
 import { Button } from "@/components/Button"
 import { useEffect,useState } from "react"
+import { toast } from "react-toastify"
 
 type CheckoutBookProps = {
     tripId: string
@@ -11,6 +12,7 @@ type CheckoutBookProps = {
     startDate: string
     endDate: string
     guests: string
+    userId: string
 }
 
 
@@ -20,8 +22,38 @@ export const CheckoutBook = ({
   startDate,
   endDate,
   guests,
+  userId,
 }:CheckoutBookProps) => {
   const [checkoutTrip, setCheckoutTrip] = useState<any>(null)
+
+  const submitCheckoutTrip = async () => {
+    const response = await fetch('/api/trips/checkout-book', {
+      method: 'POST',
+      body: JSON.stringify(
+        {
+          startDate: startDate,
+          endDate: endDate,
+          totalPrice: price,
+          guests: Number(guests),
+          userId,
+          tripId,
+        }
+      )
+    }).then(res => res.json())
+
+    console.log(response, 'SUCESSO')
+
+    if (response.success) {
+      toast.success(response.message, {
+        position: "top-right",
+      })
+    } else {
+      toast.error(response.message, {
+        position: "top-right",
+      })
+    }
+  }
+  
   useEffect(() => {
     const fetchCheckoutTrip = async () => {
       const { trip } = await fetch('/api/trips/check', {
@@ -34,15 +66,11 @@ export const CheckoutBook = ({
           }
         )
       }).then(res => res.json())
-
       setCheckoutTrip(trip)
-      console.log(trip, 'TRIP')
     }
     
-
     fetchCheckoutTrip()
   }, [])
-
   if (!checkoutTrip) return null
 
   return (
@@ -64,7 +92,7 @@ export const CheckoutBook = ({
         />
       </div>
       <div className="w-full p-4">
-        <Button >Finalizar Compra</Button>
+        <Button onClick={submitCheckoutTrip}>Finalizar Compra</Button>
       </div>
     </div>
   )
